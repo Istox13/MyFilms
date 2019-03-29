@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+ 
+{% block carousel %}
+ <div id="carousel-ex" class="carousel slide carousel-fade pt-0" data-ride="carousel">
+
+        <ol class="carousel-indicators">
+            {% for n in corousel_content["len"] %}
+                {% if n == "0" %}
+                    <li class="active" data-target="#carousel-ex" data-slide-to={{ n }}></li>
+                {% else %}
+                    <li data-target="#carousel-ex" data-slide-to={{ n }}></li>
+                {% endif %}
+            {% endfor %}
+        </ol>
+
+        <div class="carousel-inner" role="listbox">
+            {% for n in corousel_content["len"] %}
+                {% if n == "0" %}
+                    <div class="carousel-item active">
+                {% else %}
+                    <div class="carousel-item">
+                {% endif %}
+
+                        <div class="view" style="background-image: url('{{ corousel_content[n]["bg_img"] }}'); background-repeat: no-repeat; background-size: cover;">
+                            <div class="mask rgba-black-strong d-flex justify-content-center align-items-center">
+                                <div class="text-center white-text mx-5 wow fadeIn">
+                    
+                                    <h1 class="mb-4">
+                                        <strong>{{ corousel_content[n]["name"] }}</strong>
+                                    </h1>
+                        
+                                    <p>
+                                        <strong>{{ corousel_content[n]["title"] }}</strong>
+                                    </p>
+                                    
+                                    <p class="mb-4 d-done d-md-block">
+                                        <strong>{{ corousel_content[n]["text"] }}</strong>
+                                    </p>
+                        
+                                    <!--a href="#" class="btn btn-outline-white btn-lg">
+                                        Lorem, ipsum dolor.
+                                    </a-->
+                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            {% endfor %}
+
+        </div>
+
+        <a href="#carousel-ex" class="carousel-control-prev"
+        role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidder="true"></span>
+        </a>
+
+        <a href="#carousel-ex" class="carousel-control-next"
+        role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidder="true"></span>
+        </a>
+
+    </div>
+{% endblock %} 
+    
+{% block genres %}
+    {% for genre in genres_list %}
+        <li class="nav-item">
+            <a href="#" class="nav-link">{{ genre }}</a>
+        </li>
+    {% endfor %}
+{% endblock %}
+
+

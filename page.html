@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>MyFilms</title>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
+  <!-- Bootstrap core CSS -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <!-- Material Design Bootstrap -->
+  <link href="css/mdb.min.css" rel="stylesheet">
+  <!-- Your custom styles (optional) -->
+  <link href="css/style.css" rel="stylesheet">
+  <link rel="shortcut icon" href="favicon.ico">
+  <style>
+    html,
+    body, 
+    header,
+    .carousel {
+      height: 60vh;
+    }
+    @media (max-width: 740px) {
+      html,
+      body, 
+      header,
+      .carousel {
+        height: 100vh;
+      }
+    }
+    @media (min-width: 800px) and (max-width: 850px) {
+      html,
+      body, 
+      header,
+      .carousel {
+        height: 100vh;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Start your project here-->
+  <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
+    <div class="container">
+      <a href="#" class="navbar-brand waves-effect" >
+        <h1>MyFilms</h1>
+      </a>
+      <button class="navbar-toggler" type="button"
+      data-toggle="collapse" data-target="#navbarContent"
+      aria-controls="navbarContent" aria-expanded="false" 
+      aria-label="Toggle navigation"> 
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a href="#" class="nav-link waves-effect">Главная страница</a>
+          </li>
+          <li class="nav-item">
+              <a href="#" class="nav-link waves-effect">ТОП</a>
+          </li>
+          <li class="nav-item">
+              <a href="#" class="nav-link waves-effect">О нас</a>
+          </li>
+        </ul>
+
+        <ul class="navbar-nav nav-flex-icons">
+          <li class="nav-item">
+            <a href="#" class="navlink waves-effect">
+              <i class="fa fa-bell"></i>
+              <span class="badge red z-depth-1 mr-1">1</span>
+            </a>
+          </li>
+          <li class="nav-item">
+              <a href="#" class="nav-link waves-effect">
+                <strong>Вход</strong>
+              </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div id="carousel-ex" class="carousel slide carousel-fade pt-4" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li class="active" data-target="#carousel-ex" data-slide-to="0"></li>
+      <li data-target="#carousel-ex" data-slide-to="1"></li>
+      <li data-target="#carousel-ex" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner" role="listbox">
+      <div class="carousel-item active">
+        <div class="view" style="background-image: url('https://pbs.twimg.com/media/Dn_zkjIXgAAkiIj.jpg');
+        background-repeat: no-repeat; background-size: cover;">
+          <div class="mask rgba-black-strong d-flex justify-content-center align-items-center">
+            <div class="text-center white-text mx-5 wow fadeIn">
+
+              <h1 class="mb-4">
+                <strong>Небоскреб</strong>
+              </h1>
+
+              <p>
+                <strong>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Amet, a.</strong>
+              </p>
+              
+              <p class="mb-4 d-done d-md-block">
+                <strong>Lorem ipsum dolor, sit amet consectetur adipisicing elit. 
+                  Commodi nostrum, nulla accusamus maiores voluptas earum.</strong>
+              </p>
+
+              <a href="#" class="btn btn-outline-white btn-lg">
+                Lorem, ipsum dolor.
+              </a>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="carousel-item">
+          <div class="view" style="background-image: url('https://www.1zoom.ru/big2/848/259003-Sepik.jpg');
+          background-repeat: no-repeat; background-size: cover;">
+            <div class="mask rgba-black-strong d-flex justify-content-center align-items-center">
+              <div class="text-center white-text mx-5 wow fadeIn">
+  
+                <h1 class="mb-4">
+                  <strong>Небоскреб</strong>
+                </h1>
+  
+                <p>
+                  <strong>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Amet, a.</strong>
+                </p>
+                
+                <p class="mb-4 d-done d-md-block">
+                  <strong>Lorem ipsum dolor, sit amet consectetur adipisicing elit. 
+                    Commodi nostrum, nulla accusamus maiores voluptas earum.</strong>
+                </p>
+  
+                <a href="#" class="btn btn-outline-white btn-lg">
+                  Lorem, ipsum dolor.
+                </a>
+  
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="carousel-item">
+            <div class="view" style="background-image: url('https://w-dog.ru/wallpapers/6/16/438781505598711.jpg');
+            background-repeat: no-repeat; background-size: cover;">
+              <div class="mask rgba-black-strong d-flex justify-content-center align-items-center">
+                <div class="text-center white-text mx-5 wow fadeIn">
+    
+                  <h1 class="mb-4">
+                    <strong>Небоскреб</strong>
+                  </h1>
+    
+                  <p>
+                    <strong>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Amet, a.</strong>
+                  </p>
+                  
+                  <p class="mb-4 d-done d-md-block">
+                    <strong>Lorem ipsum dolor, sit amet consectetur adipisicing elit. 
+                      Commodi nostrum, nulla accusamus maiores voluptas earum.</strong>
+                  </p>
+    
+                  <a href="#" class="btn btn-outline-white btn-lg">
+                    Lorem, ipsum dolor.
+                  </a>
+    
+                </div>
+              </div>
+            </div>
+          </div>
+    </div>
+    <a href="#carousel-ex" class="carousel-control-prev"
+    role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidder="true"></span>
+    </a>
+    <a href="#carousel-ex" class="carousel-control-next"
+    role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidder="true"></span>
+    </a>
+  </div>
+
+  <main>
+    <div class="container">
+      <nav class="navbar navbar-expand-lg navbar-dark mdb-color lighten-2 mt-3 mb-5">
+        <span class="navbar-brand">Жанры:</span>
+
+          <button class="navbar-toggler" type="button"
+            data-toggle="collapse" data-target="#nextNav"
+            aria-controls="nextNav" aria-expanded="false" 
+            aria-label="Toggle navigation"> 
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="nextNav">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item">
+                <a href="#" class="nav-link">Боевик</a>
+              </li>
+              <li class="nav-item">
+                  <a href="#" class="nav-link">Фантастика</a>
+              </li>
+              <li class="nav-item">
+                  <a href="#" class="nav-link">Милодрама</a>
+              </li>
+            </ul>
+
+            <form class="form-inline">
+              <div class="md-form my-0">
+                <input type="text" class="form-control mr-sm-2" placeholder="Поиск" aria-label="Поиск">
+              </div>
+            </form>
+          </div>
+      </nav>
+
+      <section class="text-center mb-4">
+        <div class="row wow fadeIn">
+
+          <div class="col-lg-3 col-md-6 mb-4">
+            <div class="card">
+              <div class="view overlay">
+                <img class="card-img-top" src="https://www.kinopoisk.ru/images/film_big/611822.jpg" alt="">
+                <a href="">
+                  <div class="mask rgba-white-slight"></div>
+                </a>
+              </div>
+              <div class="card-body text-center">
+                <h5>
+                  <strong>
+                    <a href="#" class="dark-grey-text">
+                        Великая стена 
+                        <!-- span class="badge badge-pill danger-color"></span -->
+                    </a>
+                  </strong>
+                </h5>
+                <a href="" class="grey-text">
+                    <h5>2016 год - 104 мин.</h5>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 mb-4">
+              <div class="card">
+                <div class="view overlay">
+                  <img class="card-img-top" src="https://www.kinopoisk.ru/images/film_big/611822.jpg" alt="">
+                  <a href="">
+                    <div class="mask rgba-white-slight"></div>
+                  </a>
+                </div>
+                <div class="card-body text-center">
+                  <h5>
+                    <strong>
+                      <a href="#" class="dark-grey-text">
+                          Великая стена 
+                          <!-- span class="badge badge-pill danger-color"></span -->
+                      </a>
+                    </strong>
+                  </h5>
+                  <a href="" class="grey-text">
+                      <h5>2016 год - 104 мин.</h5>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="card">
+                  <div class="view overlay">
+                    <img class="card-img-top" src="https://www.kinopoisk.ru/images/film_big/611822.jpg" alt="">
+                    <a href="">
+                      <div class="mask rgba-white-slight"></div>
+                    </a>
+                  </div>
+                  <div class="card-body text-center">
+                    <h5>
+                      <strong>
+                        <a href="#" class="dark-grey-text">
+                            Великая стена 
+                            <!-- span class="badge badge-pill danger-color"></span -->
+                        </a>
+                      </strong>
+                    </h5>
+                    <a href="" class="grey-text">
+                        <h5>2016 год - 104 мин.</h5>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-3 col-md-6 mb-4">
+                  <div class="card">
+                    <div class="view overlay">
+                      <img class="card-img-top" src="https://www.kinopoisk.ru/images/film_big/611822.jpg" alt="">
+                      <a href="">
+                        <div class="mask rgba-white-slight"></div>
+                      </a>
+                    </div>
+                    <div class="card-body text-center">
+                      <h5>
+                        <strong>
+                          <a href="#" class="dark-grey-text">
+                              Великая стена 
+                              <!-- span class="badge badge-pill danger-color"></span -->
+                          </a>
+                        </strong>
+                      </h5>
+                      <a href="" class="grey-text">
+                          <h5>2016 год - 104 мин.</h5>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+        </div>
+        <div class="row wow fadeIn">
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="card">
+                  <div class="view overlay">
+                    <img class="card-img-top" src="https://www.kinopoisk.ru/images/film_big/611822.jpg" alt="">
+                    <a href="">
+                      <div class="mask rgba-white-slight"></div>
+                    </a>
+                  </div>
+                  <div class="card-body text-center">
+                    <h5>
+                      <strong>
+                        <a href="#" class="dark-grey-text">
+                            Великая стена 
+                            <!-- span class="badge badge-pill danger-color"></span -->
+                        </a>
+                      </strong>
+                    </h5>
+                    <a href="" class="grey-text">
+                        <h5>2016 год - 104 мин.</h5>
+                    </a>
+                  </div>
+                </div>
+              </div>
+    
+              <div class="col-lg-3 col-md-6 mb-4">
+                  <div class="card">
+                    <div class="view overlay">
+                      <img class="card-img-top" src="https://www.kinopoisk.ru/images/film_big/611822.jpg" alt="">
+                      <a href="">
+                        <div class="mask rgba-white-slight"></div>
+                      </a>
+                    </div>
+                    <div class="card-body text-center">
+                      <h5>
+                        <strong>
+                          <a href="#" class="dark-grey-text">
+                              Великая стена 
+                              <!-- span class="badge badge-pill danger-color"></span -->
+                          </a>
+                        </strong>
+                      </h5>
+                      <a href="" class="grey-text">
+                          <h5>2016 год - 104 мин.</h5>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+    
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="card">
+                      <div class="view overlay">
+                        <img class="card-img-top" src="https://www.kinopoisk.ru/images/film_big/611822.jpg" alt="">
+                        <a href="">
+                          <div class="mask rgba-white-slight"></div>
+                        </a>
+                      </div>
+                      <div class="card-body text-center">
+                        <h5>
+                          <strong>
+                            <a href="#" class="dark-grey-text">
+                                Великая стена 
+                                <!-- span class="badge badge-pill danger-color"></span -->
+                            </a>
+                          </strong>
+                        </h5>
+                        <a href="" class="grey-text">
+                            <h5>2016 год - 104 мин.</h5>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+    
+                  <div class="col-lg-3 col-md-6 mb-4">
+                      <div class="card">
+                        <div class="view overlay">
+                          <img class="card-img-top" src="https://www.kinopoisk.ru/images/film_big/611822.jpg" alt="">
+                          <a href="">
+                            <div class="mask rgba-white-slight"></div>
+                          </a>
+                        </div>
+                        <div class="card-body text-center">
+                          <h5>
+                            <strong>
+                              <a href="#" class="dark-grey-text">
+                                  Великая стена 
+                                  <!-- span class="badge badge-pill danger-color"></span -->
+                              </a>
+                            </strong>
+                          </h5>
+                          <a href="" class="grey-text">
+                              <h5>2016 год - 104 мин.</h5>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+        </div>
+      </section>
+
+      <nav class="d-flex justify-content-center wow fadeIn">
+        <ul class="pagination pg-blue">
+
+          <li class="page-item disabled">
+            <a href="#" class="page-link" aria-label="Previous">
+              <span aria-hider="true">&laquo;</span>
+            </a>
+          </li>
+
+          <li class="page-item active">
+            <a href="#" class="page-link" aria-label="Previous">
+              <span aria-hider="true">1</span>
+            </a>
+          </li>
+
+          <li class="page-item">
+            <a href="#" class="page-link" aria-label="Previous">
+              <span aria-hider="true">2</span>
+            </a>
+          </li>
+
+            <li class="page-item">
+              <a href="#" class="page-link" aria-label="Previous">
+                <span aria-hider="true">3</span>
+              </a>
+            </li>
+
+            <li class="page-item">
+              <a href="#" class="page-link" aria-label="Previous">
+                <span aria-hider="true">4</span>
+              </a>
+            </li>
+
+            <li class="page-item">
+              <a href="#" class="page-link" aria-label="Previous">
+                <span aria-hider="true">5</span>
+              </a>
+            </li>
+
+            <li class="page-item">
+              <a href="#" class="page-link" aria-label="Previous">
+                <span aria-hider="true">&raquo;</span>
+              </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </main>
+
+  <footer class="page-footer text-center font-small wow fadeIn">
+    <div class="pt-4">
+      <a href="#" class="btn btn-outline-white" role="button">MyFilms
+        <i class="fa fa-graduation-cap ml-2"></i>
+      </a>
+    </div>
+
+    <hr class="my-4">
+
+    <div class="pb-4">
+      <a href="#">
+        <i class="fab fa-github"></i>
+      </a>
+
+      <a href="#">
+        <i class="fab fa-vk"></i>
+      </a>
+    </div>
+    
+  </footer>
+
+  <!-- SCRIPTS -->
+  <!-- JQuery -->
+  <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript" src="js/popper.min.js"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="js/mdb.js"></script>
+</body>
+
+</html>

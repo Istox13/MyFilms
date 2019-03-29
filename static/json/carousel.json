@@ -1,0 +1,25 @@
+{
+    "len": ["0", "1", "2"],
+    "0": {
+        "name": "",
+        "title": "Основан на BMD",
+        "text": "MDBootstrap jQuery - является основой этого проекта",
+        "bg_img": "https://pbs.twimg.com/media/Dn_zkjIXgAAkiIj.jpg"
+    },
+
+    "1": {
+        "name": "",
+        "title": "Основан на BMD",
+        "text": "MDBootstrap jQuery - является основой этого проекта",
+        "bg_img": "https://mdbootstrap.com/img/Marketing/general/jquery-presentation-wide.png"
+    },
+
+    "2": {
+        "name": "",
+        "title": "Основан на BMD",
+        "text": "MDBootstrap jQuery - является основой этого проекта",
+        "bg_img": "https://mdbootstrap.com/img/Marketing/general/jquery-presentation-wide.png"
+    }
+
+
+}
