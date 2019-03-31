@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block content %}
+<main class="mt-5 pt-4 mr-auto ml-auto">
+    <div class="mb-4 mt-5 container">
+
+            <section class="form-simple" style="width: 480px; ">
+
+                <!--Form with header-->
+                <div class="card">
+
+                    <!--Header-->
+                    <div class="header pt-3 grey lighten-2">
+
+                        <div class="row d-flex justify-content-start">
+                            <h3 class="deep-grey-text mt-3 mb-4 pb-1 mx-5">Вход</h3>
+                        </div>
+
+                    </div>
+                    <!--Header-->
+
+                    <div class="card-body mx-4 mt-4">
+
+                        <!--Body-->
+                        <div class="md-form">
+                            <input type="text" id="Form-email4" class="form-control">
+                            <label for="Form-email4">Email или Никнейм</label>
+                        </div>
+
+                        <div class="md-form pb-3">
+                            <input type="password" id="Form-pass4" class="form-control">
+                            <label for="Form-pass4">Пароль</label>
+                        </div>
+
+                        <div class="text-center mb-4">
+                            <button type="button" class="btn btn-danger btn-block z-depth-2 waves-effect waves-light">Log in</button>
+                        </div>
+                        <p class="font-small grey-text d-flex justify-content-center">Нет аккаунта?
+                            <a href="/registration" class="dark-grey-text font-weight-bold ml-1"> Регистрация</a>
+                        </p>
+
+                    </div>
+
+                </div>
+                <!--/Form with header-->
+
+            </section>
+
+        </div>
+    </div>
+</main>
+    <!--h1>Sign In</h1>
+    <form action="" method="post">
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.username.label }}<br>
+            {{ form.username(size=32) }}<br>
+            {% for error in form.username.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.password.label }}<br>
+            {{ form.password(size=32) }}<br>
+            {% for error in form.password.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
+        <p>{{ form.submit() }}</p>
+    </form-->
+{% endblock %}
+

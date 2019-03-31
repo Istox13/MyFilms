@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>MyFilms</title>
+  <title>MyFilms {{ title }}</title>
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
   <!-- Bootstrap core CSS -->
@@ -36,7 +36,7 @@
       header,
       .carousel {
         height: 100vh;
-      }
+    }
     }
   </style>
 </head>
@@ -46,8 +46,12 @@
   <!-- start navbar -->
   <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
     <div class="container">
-      <a href="#" class="navbar-brand waves-effect" >
-        <h1>MyFilms</h1>
+      <a href="/" class="navbar-brand waves-effect" >
+        <h1>MyFilms
+            <sup>
+                <span class="badge red z-depth-1 mr-1">alpha</span>
+            </sup>
+        </h1>
       </a>
       <button class="navbar-toggler" type="button"
       data-toggle="collapse" data-target="#navbarContent"
@@ -58,7 +62,7 @@
 
       <div class="collapse navbar-collapse" id="navbarContent">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
+          <!--li class="nav-item">
             <a href="#" class="nav-link waves-effect">Главная страница</a>
           </li>
           <li class="nav-item">
@@ -66,7 +70,7 @@
           </li>
           <li class="nav-item">
               <a href="#" class="nav-link waves-effect">О нас</a>
-          </li>
+          </li-->
         </ul>
 
         <ul class="navbar-nav nav-flex-icons">
@@ -77,7 +81,7 @@
             </a>
           </li>
           <li class="nav-item">
-              <a href="#" class="nav-link waves-effect">
+              <a href="/login" class="nav-link waves-effect">
                 <strong>Вход</strong>
               </a>
           </li>
@@ -88,299 +92,32 @@
 
   <!-- end navbar -->
 
-  {% block carousel %}{% endblock %}
- 
-  <main>
-        <div class="container">
-                <nav class="navbar navbar-expand-lg navbar-dark mdb-color lighten-2 mt-3 mb-5">
-                  <span class="navbar-brand">Жанры:</span>
-          
-                    <button class="navbar-toggler" type="button"
-                      data-toggle="collapse" data-target="#nextNav"
-                      aria-controls="nextNav" aria-expanded="false" 
-                      aria-label="Toggle navigation"> 
-                      <span class="navbar-toggler-icon"></span>
-                    </button>
-          
-                    <div class="collapse navbar-collapse" id="nextNav">
-                      <ul class="navbar-nav mr-auto">
-                        {% block genres %}{% endblock %}
-                      </ul>
-          
-                      <form class="form-inline">
-                        <div class="md-form my-0">
-                          <input type="text" class="form-control mr-sm-2" placeholder="Поиск" aria-label="Поиск">
-                        </div>
-                      </form>
-                    </div>
-                </nav>
-          
-                <section class="text-center mb-4">
-                  <div class="row wow fadeIn">
-          
-                    <div class="col-lg-3 col-md-6 mb-4">
-                      <div class="card">
-                        <div class="view overlay">
-                          <img class="card-img-top" src="https://www.kinopoisk.ru/images/film_big/611822.jpg" alt="">
-                          <a href="">
-                            <div class="mask rgba-white-slight"></div>
-                          </a>
-                        </div>
-                        <div class="card-body text-center">
-                          <h5>
-                            <strong>
-                              <a href="#" class="dark-grey-text">
-                                  Великая стена 
-                                  <!-- span class="badge badge-pill danger-color"></span -->
-                              </a>
-                            </strong>
-                          </h5>
-                          <a href="" class="grey-text">
-                              <h5>2016 год - 104 мин.</h5>
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-          
-                    <div class="col-lg-3 col-md-6 mb-4">
-                        <div class="card">
-                          <div class="view overlay">
-                            <img class="card-img-top" src="https://www.kinopoisk.ru/images/film_big/611822.jpg" alt="">
-                            <a href="">
-                              <div class="mask rgba-white-slight"></div>
-                            </a>
-                          </div>
-                          <div class="card-body text-center">
-                            <h5>
-                              <strong>
-                                <a href="#" class="dark-grey-text">
-                                    Великая стена 
-                                    <!-- span class="badge badge-pill danger-color"></span -->
-                                </a>
-                              </strong>
-                            </h5>
-                            <a href="" class="grey-text">
-                                <h5>2016 год - 104 мин.</h5>
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-          
-                      <div class="col-lg-3 col-md-6 mb-4">
-                          <div class="card">
-                            <div class="view overlay">
-                              <img class="card-img-top" src="https://www.kinopoisk.ru/images/film_big/611822.jpg" alt="">
-                              <a href="">
-                                <div class="mask rgba-white-slight"></div>
-                              </a>
-                            </div>
-                            <div class="card-body text-center">
-                              <h5>
-                                <strong>
-                                  <a href="#" class="dark-grey-text">
-                                      Великая стена 
-                                      <!-- span class="badge badge-pill danger-color"></span -->
-                                  </a>
-                                </strong>
-                              </h5>
-                              <a href="" class="grey-text">
-                                  <h5>2016 год - 104 мин.</h5>
-                              </a>
-                            </div>
-                          </div>
-                        </div>
-          
-                        <div class="col-lg-3 col-md-6 mb-4">
-                            <div class="card">
-                              <div class="view overlay">
-                                <img class="card-img-top" src="https://www.kinopoisk.ru/images/film_big/611822.jpg" alt="">
-                                <a href="">
-                                  <div class="mask rgba-white-slight"></div>
-                                </a>
-                              </div>
-                              <div class="card-body text-center">
-                                <h5>
-                                  <strong>
-                                    <a href="#" class="dark-grey-text">
-                                        Великая стена 
-                                        <!-- span class="badge badge-pill danger-color"></span -->
-                                    </a>
-                                  </strong>
-                                </h5>
-                                <a href="" class="grey-text">
-                                    <h5>2016 год - 104 мин.</h5>
-                                </a>
-                              </div>
-                            </div>
-                          </div>
-          
-                  </div>
-                  <div class="row wow fadeIn">
-                      <div class="col-lg-3 col-md-6 mb-4">
-                          <div class="card">
-                            <div class="view overlay">
-                              <img class="card-img-top" src="https://www.kinopoisk.ru/images/film_big/611822.jpg" alt="">
-                              <a href="">
-                                <div class="mask rgba-white-slight"></div>
-                              </a>
-                            </div>
-                            <div class="card-body text-center">
-                              <h5>
-                                <strong>
-                                  <a href="#" class="dark-grey-text">
-                                      Великая стена 
-                                      <!-- span class="badge badge-pill danger-color"></span -->
-                                  </a>
-                                </strong>
-                              </h5>
-                              <a href="" class="grey-text">
-                                  <h5>2016 год - 104 мин.</h5>
-                              </a>
-                            </div>
-                          </div>
-                        </div>
-              
-                        <div class="col-lg-3 col-md-6 mb-4">
-                            <div class="card">
-                              <div class="view overlay">
-                                <img class="card-img-top" src="https://www.kinopoisk.ru/images/film_big/611822.jpg" alt="">
-                                <a href="">
-                                  <div class="mask rgba-white-slight"></div>
-                                </a>
-                              </div>
-                              <div class="card-body text-center">
-                                <h5>
-                                  <strong>
-                                    <a href="#" class="dark-grey-text">
-                                        Великая стена 
-                                        <!-- span class="badge badge-pill danger-color"></span -->
-                                    </a>
-                                  </strong>
-                                </h5>
-                                <a href="" class="grey-text">
-                                    <h5>2016 год - 104 мин.</h5>
-                                </a>
-                              </div>
-                            </div>
-                          </div>
-              
-                          <div class="col-lg-3 col-md-6 mb-4">
-                              <div class="card">
-                                <div class="view overlay">
-                                  <img class="card-img-top" src="https://www.kinopoisk.ru/images/film_big/611822.jpg" alt="">
-                                  <a href="">
-                                    <div class="mask rgba-white-slight"></div>
-                                  </a>
-                                </div>
-                                <div class="card-body text-center">
-                                  <h5>
-                                    <strong>
-                                      <a href="#" class="dark-grey-text">
-                                          Великая стена 
-                                          <!-- span class="badge badge-pill danger-color"></span -->
-                                      </a>
-                                    </strong>
-                                  </h5>
-                                  <a href="" class="grey-text">
-                                      <h5>2016 год - 104 мин.</h5>
-                                  </a>
-                                </div>
-                              </div>
-                            </div>
-              
-                            <div class="col-lg-3 col-md-6 mb-4">
-                                <div class="card">
-                                  <div class="view overlay">
-                                    <img class="card-img-top" src="https://www.kinopoisk.ru/images/film_big/611822.jpg" alt="">
-                                    <a href="">
-                                      <div class="mask rgba-white-slight"></div>
-                                    </a>
-                                  </div>
-                                  <div class="card-body text-center">
-                                    <h5>
-                                      <strong>
-                                        <a href="#" class="dark-grey-text">
-                                            Великая стена 
-                                            <!-- span class="badge badge-pill danger-color"></span -->
-                                        </a>
-                                      </strong>
-                                    </h5>
-                                    <a href="" class="grey-text">
-                                        <h5>2016 год - 104 мин.</h5>
-                                    </a>
-                                  </div>
-                                </div>
-                              </div>
-                  </div>
-                </section>
-          
-                <nav class="d-flex justify-content-center wow fadeIn">
-                  <ul class="pagination pg-blue">
-          
-                    <li class="page-item disabled">
-                      <a href="#" class="page-link" aria-label="Previous">
-                        <span aria-hider="true">&laquo;</span>
-                      </a>
-                    </li>
-          
-                    <li class="page-item active">
-                      <a href="#" class="page-link" aria-label="Previous">
-                        <span aria-hider="true">1</span>
-                      </a>
-                    </li>
-          
-                    <li class="page-item">
-                      <a href="#" class="page-link" aria-label="Previous">
-                        <span aria-hider="true">2</span>
-                      </a>
-                    </li>
-          
-                      <li class="page-item">
-                        <a href="#" class="page-link" aria-label="Previous">
-                          <span aria-hider="true">3</span>
-                        </a>
-                      </li>
-          
-                      <li class="page-item">
-                        <a href="#" class="page-link" aria-label="Previous">
-                          <span aria-hider="true">4</span>
-                        </a>
-                      </li>
-          
-                      <li class="page-item">
-                        <a href="#" class="page-link" aria-label="Previous">
-                          <span aria-hider="true">5</span>
-                        </a>
-                      </li>
-          
-                      <li class="page-item">
-                        <a href="#" class="page-link" aria-label="Previous">
-                          <span aria-hider="true">&raquo;</span>
-                        </a>
-                      </li>
-                  </ul>
-                </nav>
-              </div>
-  </main>
+    {% block carousel %}{% endblock %}
 
-  <footer class="page-footer text-center font-small wow fadeIn">
-    <div class="pt-4">
-          <h5>MyFilms <i class="fa fa-heart"></i> for you</h5>
-    </div>
+    {% block content %}{% endblock %}
+    {% if fixed_footer %}
+        <footer class="page-footer text-center font-small wow fadeIn fixed-bottom">
+      {% else %}
+        <footer class="page-footer text-center font-small wow fadeIn">
+    {% endif %}
+            <div class="pt-4">
+                <h5>MyFilms <i class="fa fa-heart"></i> for you</h5>
+            </div>
 
-    <hr class="my-4">
+            <hr class="my-4">
 
-    <div class="pb-4">
-      <a href="#">GITHUB
-        <i class="fab fa-github"></i>
-      </a>
+            <div class="pb-4">
+            <a href="https://github.com/Istox13/MyFilms">GITHUB
+                <i class="fab fa-github"></i>
+            </a>
 
-      <a href="#" class="ml-5">VK.COM
-        <i class="fab fa-vk"></i>
-      </a>
-    </div>
-    
-  </footer>
+            <a href="https://vk.com/id432809419" class="ml-5">VK.COM
+                <i class="fab fa-vk"></i>
+            </a>
+            </div>
+            <!--div class="footer-copyright py-3">text</div-->
+        </footer>
+  
 
   <!-- SCRIPTS -->
   <!-- JQuery -->
@@ -391,6 +128,9 @@
   <script type="text/javascript" src="{{ url_for("static", filename="js/bootstrap.min.js") }}"></script>
   <!-- MDB core JavaScript -->
   <script type="text/javascript" src="{{ url_for("static", filename="js/mdb.js") }}"></script>
+  <script>
+      new WOW().init();
+  </script>
 </body>
 
 </html>
