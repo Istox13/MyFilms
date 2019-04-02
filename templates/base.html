@@ -75,15 +75,27 @@
 
         <ul class="navbar-nav nav-flex-icons">
           <li class="nav-item">
-            <a href="#" class="navlink waves-effect">
+            <!--a href="#" class="navlink waves-effect">
               <i class="fa fa-bell"></i>
               <span class="badge red z-depth-1 mr-1">1</span>
-            </a>
+            </a-->
           </li>
           <li class="nav-item">
+            {% if "username" in session %}
+              
+              <div class="chip waves-effect waves-effect">
+                <a href="/user/id{{ session['user_id'] }}">
+                  <div class="avatar mx-auto white">
+                      <img src="https://pp.userapi.com/c845020/v845020087/1b0e86/VkYnsFwi2go.jpg" class="rounded-circle" style="width: 40px; height: 40px;" alt="Sample avatar image.">
+                      {{session['username']}}
+                  </div>
+                </a>
+              </div>
+            {% else %}
               <a href="/login" class="nav-link waves-effect">
                 <strong>Вход</strong>
               </a>
+            {% endif %}
           </li>
         </ul>
       </div>
