@@ -32,5 +32,4 @@ class Film(db.Model):
     length = db.Column(db.Integer, unique=False, nullable=False)
     year = db.Column(db.Integer, unique=False, nullable=False)
 
-
 db.create_all()

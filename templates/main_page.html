@@ -102,22 +102,22 @@
                         <div class="col-lg-3 col-md-6 mb-4">
                             <div class="card">
                                 <div class="view overlay">
-                                <img class="card-img-top" src="{{ film["headpiece"] }}" alt="">
-                                <a href="films/id{{ film["id"] }}">
+                                <img class="card-img-top" src="{{ film.url_bg_img }}" alt="">
+                                <a href="films/id{{ film.id }}">
                                     <div class="mask rgba-white-slight"></div>
                                 </a>
                                 </div>
                                 <div class="card-body text-center">
                                 <h5>
                                     <strong>
-                                    <a href="films/id{{ film["id"] }}" class="dark-grey-text">
-                                        {{ film["name"] }}
+                                    <a href="films/id{{ film.id }}" class="dark-grey-text">
+                                        {{ film.name }}
                                         <!-- span class="badge badge-pill danger-color"></span -->
                                     </a>
                                     </strong>
                                 </h5>
                                 <a href="" class="grey-text">
-                                    <h5>{{ film["year"] }} год - {{ film["length"] }} мин.</h5>
+                                    <h5>{{ film.year }} год - {{ film.length }} мин.</h5>
                                 </a>
                                 </div>
                             </div>
@@ -145,7 +145,7 @@
                 {% else %}
                 <li class="page-item">
                 {% endif %}
-                    <a href="#" class="page-link" aria-label="Previous">
+                    <a href="/page/{{ n }}" class="page-link" aria-label="Previous">
                         <span aria-hider="true">{{ n }}</span>
                     </a>
                 </li>

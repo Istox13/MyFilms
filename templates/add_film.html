@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+<main class="container pt-5">
+    <br><br><br>
+<div class="card mx-xl-5">
+
+        <!-- Card body -->
+        <div class="card-body">
+    
+            <!-- Default form subscription -->
+            <form method="POST">
+                <p class="h4 text-center py-4">Добавление фильма</p>
+    
+                <!-- Default input name -->
+                <label for="defaultFormCardNameEx" class="grey-text font-weight-light">Название</label>
+                <input type="text" id="defaultFormCardNameEx" class="form-control" name="name_film">
+    
+                <br>
+                
+                <label for="defaultFormCardEmailEx" class="grey-text font-weight-light">Продолжительность</label>
+                <input type="text" id="defaultFormCardEmailEx" class="form-control" name="length">
+
+                <br>
+
+                <label for="defaultFormCardEmailEx" class="grey-text font-weight-light">Год выхода</label>
+                <input type="text" id="defaultFormCardEmailEx" class="form-control" name="year">
+
+                <br>
+
+                <label for="defaultFormCardEmailEx" class="grey-text font-weight-light">Жанры (разделитель: пробел)</label>
+                <input type="text" id="defaultFormCardEmailEx" class="form-control" name="genres">
+
+                <br>
+
+                <label for="defaultFormCardEmailEx" class="grey-text font-weight-light">Ссылка на постер фильма</label>
+                <input type="text" id="defaultFormCardEmailEx" class="form-control" name="url_bg_img">
+
+                <br>
+
+                <div class="md-form">
+                        <textarea name="description" type="text" id="form7" class="form-control md-textarea" rows="3"></textarea>
+                        <label for="form7" class="">Описание</label>
+                    </div>
+                
+    
+                <div class="text-center py-4 mt-3">
+                    <button class="btn btn-outline-purple" type="submit">Добавить<i class="fa fa-paper-plane-o ml-2"></i></button>
+                </div>
+            </form>
+            <!-- Default form subscription -->
+    
+        </div>
+        <!-- Card body -->
+    
+    </div>
+    <br><br>
+    <!-- Card -->
+</main>
+{% endblock %}
