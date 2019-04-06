@@ -1,0 +1,25 @@
+{
+    "len": ["0", "1", "2"],
+    "0": {
+        "name": "",
+        "title": "YL",
+        "text": "Специально для Яндекс.Лицей",
+        "bg_img": "http://mkala.org/assets/images_cache/6f912523381f6739eb852d3d73776b8b.jpg"
+    },
+
+    "1": {
+        "name": "",
+        "title": "Основан на BMD",
+        "text": "MDBootstrap jQuery - взят в основу этого проекта",
+        "bg_img": "https://mdbootstrap.com/img/Marketing/general/jquery-presentation-wide.png"
+    },
+
+    "2": {
+        "name": "",
+        "title": "Сонная неделя",
+        "text": "MyFilms - написан за неделю одним человеком",
+        "bg_img": "https://pp.userapi.com/c844724/v844724300/1d5fad/VKI4w-tBDuE.jpg"
+    }
+
+
+}
