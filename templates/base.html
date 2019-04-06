@@ -49,7 +49,7 @@
       <a href="/" class="navbar-brand waves-effect" >
         <h1>MyFilms
             <sup>
-                <span class="badge red z-depth-1 mr-1">alpha</span>
+                <span class="badge red z-depth-1 mr-1">beta</span>
             </sup>
         </h1>
       </a>
@@ -99,28 +99,30 @@
     {% block carousel %}{% endblock %}
 
     {% block content %}{% endblock %}
-    {% if fixed_footer %}
-        <footer class="page-footer text-center font-small wow fadeIn fixed-bottom">
-      {% else %}
-        <footer class="page-footer text-center font-small wow fadeIn">
+
+    {% if not footer %}
+      {% if fixed_footer %}
+          <footer class="page-footer text-center font-small wow fadeIn fixed-bottom">
+        {% else %}
+          <footer class="page-footer text-center font-small wow fadeIn">
+      {% endif %}
+              <div class="pt-4">
+                  <h5>MyFilms <i class="fa fa-heart"></i> for you</h5>
+              </div>
+
+              <hr class="my-4">
+
+              <div class="pb-4">
+              <a href="https://github.com/Istox13/MyFilms">GITHUB
+                  <i class="fab fa-github"></i>
+              </a>
+
+              <a href="https://vk.com/id432809419" class="ml-5">VK.COM
+                  <i class="fab fa-vk"></i>
+              </a>
+              </div>
+          </footer>
     {% endif %}
-            <div class="pt-4">
-                <h5>MyFilms <i class="fa fa-heart"></i> for you</h5>
-            </div>
-
-            <hr class="my-4">
-
-            <div class="pb-4">
-            <a href="https://github.com/Istox13/MyFilms">GITHUB
-                <i class="fab fa-github"></i>
-            </a>
-
-            <a href="https://vk.com/id432809419" class="ml-5">VK.COM
-                <i class="fab fa-vk"></i>
-            </a>
-            </div>
-        </footer>
-  
 
   <!-- SCRIPTS -->
   <!-- JQuery -->

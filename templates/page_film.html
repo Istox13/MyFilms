@@ -5,29 +5,22 @@
         <div class="container dark-grey-text mt-5">
             <div class="row wow fadeIn">
                 <div class="col-md-6 mb-4">
-                    <img src="https://www.kinopoisk.ru/images/film_big/611822.jpg" alt="" class="img-fluid">
+                    <img src="{{ film.url_bg_img }}" alt="" class="img-fluid">
                 </div>
                 <div class="col-md-6 mb-4">
                     <div class="p-4">
                         <div class="mb-3">
-                            <a href="">
-                                <span class="badge blue mr-1">фэнтези</span>
-                            </a>
-                            <a href="">
-                                    <span class="badge blue mr-1">боевик</span>
-                            </a>
-                            <a href="">
-                                    <span class="badge blue mr-1">триллер</span>
-                            </a>
-                            <a href="">
-                                    <span class="badge blue mr-1">приключения</span>
-                            </a>
+                            {% for genre in film.genres.split() %}
+                                <a href="">
+                                    <span class="badge blue mr-1">{{genre}}</span>
+                                </a>
+                            {% endfor %}
                         </div>
                         <p class="lead font-weight-bold">
                             Описание:
                         </p>
                         <p>
-                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Enim ducimus libero incidunt iusto voluptate repudiandae fugiat non similique soluta, labore autem ratione doloribus cupiditate nisi cum atque quia consequuntur inventore.
+                            {{ film.description }}
                         </p>
                     </div>
                 </div>
@@ -39,9 +32,21 @@
         <div class="row d-flex justify-content-center wow fadeIn">
             <div class="col-md-6text-center">
                 <h4>
-                    Просмотр:
+
                 </h4>
-            </div>
+                {% if "username" in session %}
+                    {% if user %}
+                        <form method="POST">
+                        {% if film.id|string() not in user.films.split() %}
+                            <button type="button submit" class="btn btn-dark-green waves-effect waves-light">Отметить просмотреным</button>
+                        {% else %}
+                            <button type="button submit" class="btn btn-danger btn-rounded waves-effect waves-light">Отметить непросмотреным</button>
+                        </form>
+                        {% endif %}
+
+                    {% endif %}
+                {% endif %}
+                </div>  
         </div>
     </main>
 

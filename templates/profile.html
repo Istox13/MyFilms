@@ -3,11 +3,13 @@
 {% block content %}
 <main class="container pt-5">
     <br>
+    {% if not private or session["user_id"] == user_id or session["admin"] %}
         <ul class="nav nav-pills mb-3 pt-5" id="pills-tab" role="tablist">
                 <li class="nav-item">
                   <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab"
                     aria-controls="pills-home" aria-selected="true">Полная статистика</a>
                 </li>
+                {% if session["user_id"] == user_id %}
                 <li class="nav-item">
                   <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab"
                     aria-controls="pills-profile" aria-selected="false">Настройки</a>
@@ -18,15 +20,78 @@
                           aria-controls="pills-contact" aria-selected="false">Admin панель</a>
                 </li>
                 {% endif %}
+                {% endif %}
               </ul>
               <div class="tab-content" id="pills-tabContent">
                 <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
                     <div class="col-1-3">
-                        <strong>Находится в разработке</strong>
+                            <hr>
+                              <center>
+                                <div class="card">
+                                  <div class="card-body">
+                                    <p class="card-text">Количество просмотреных фильмов</p>
+                                    <h5 class="card-title">{{ result["films"] }}</h5>
+                                  </div>
+                                </div>
+                                <div class="card">
+                                  <div class="card-body">
+                                    <p class="card-text">Потрачено часов</p>
+                                    <h5 class="card-title">{{ result["hours"] }}</h5>
+                                  </div>
+                                </div>
+                                <div class="card">
+                                  <div class="card-body">
+                                    <p class="card-text">Потрачено дней</p>
+                                    <h5 class="card-title">{{ result["days"] }}</h5>
+                                  </div>
+                                </div>
+                              </center>
+                            <hr>
+                            <table class="table table-striped">
+                                    <thead>
+                                      <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Название</th>
+                                        <th scope="col">Длительность</th>
+                                        <th scope="col">Год</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for i, film in films_user %}
+                                            <tr>
+                                                <th scope="row">{{ i + 1 }}</th>
+                                                <td><a href="/films/id{{ film.id }}" style="color: royalblue;">{{ film.name }}</a></td>
+                                                <td>{{ film.length }} мин.</td>
+                                                <td>{{ film.year }}</td>
+                                            </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                  </table>
+
                     </div>
                 </div>
                 <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-
+                    {% if session["user_id"] == user_id %}
+                    
+                      <div>
+                        <hr>
+                          <center>  
+                            <form method="POST">
+                              <strong>Приватный профиль: 
+                                <button type="button submit" name="btn" value="{% if not private %} 1 {% else %} 0 {% endif %}" class="btn {% if private %} btn-dark-green {% else %} btn-danger btn-rounded {% endif %} waves-effect waves-light">{% if private %} ON {% else %} OFF {% endif %}</button>
+                              </strong>
+                            </form>
+                          </center>  
+                        <hr>
+                          <center>  
+                            <a href="/logout">
+                              <button type="button" class="btn btn-warning btn-rounded waves-effect waves-light">Выход</button>
+                            </a>
+                          </center>  
+                          <hr>
+                        </div>
+                    
+                    {% endif %}
                 </div>
 
                 {% if session["admin"] %}
@@ -35,5 +100,10 @@
                         </div>
                 {% endif %}
               </div>
+    {% else %}
+              <div class="pt-5">
+                  <h1 style="margin-top: 45%">Error #405</h1>
+              </div>
+    {% endif %}
     </main>
 {% endblock %}
