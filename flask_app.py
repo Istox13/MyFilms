@@ -5,13 +5,23 @@ from werkzeug.security import generate_password_hash, check_password_hash
 import time
 
 def init_content(content, width=4, height=5, page=1):
-    count_pages = len(content) / width * height 
-    count_pages += count_pages % 1 != 0
+    ln_cont = len(content)
+    count_pages = ln_cont // (width * height )
+    count_pages += (ln_cont % (width * height)) != 0
 
     new_content = list()
     for i in range(height):
-        new_content.append(content[(page - 1) * width * height + i * width : (page - 1) * width * height + (i + 1) * width ])
-    return new_content, int(count_pages)
+        new_content.append(content[(page - 1) * width * height + i * width : 
+        (page - 1) * width * height + (i + 1) * width ])
+    
+
+    if page in range(1, 4):
+        pages = list(range(1, int(count_pages) + 1))[:5]
+    elif page in range(int(count_pages) - 2, int(count_pages) + 1):
+        pages = list(range(int(count_pages) - 5, int(count_pages) + 1))[-5:]
+    elif not content:
+        pages = [1]
+    return new_content, pages, int(count_pages)
 
 @app.route('/logout')
 def logout():
@@ -56,7 +66,7 @@ def registration():
             error = "В пароле меньше восьми символов"
         else:
             password = generate_password_hash(password)
-            user = User(password=password, login=login, admin=False)
+            user = User(password=password, login=login, admin=False, films=' ', open=1)
             db.session.add(user)
             db.session.commit()
             correct = User.query.filter(User.login == login).first()
@@ -89,41 +99,126 @@ def admin():
 def not_found(error):
     return render_template("error_404.html", title=": Страница не найдена", fixed_footer=True)
 
-@app.route("/page/<int:nomb>")
+@app.route("/page/<int:nomb>", methods=["POST", "GET"])
 def page(nomb):
-    content, pages = init_content(Film.query.all())
-    json_list = json.loads(open('static/json/carousel.json', "rt", encoding="utf8").read())
-    return render_template("main_page.html", corousel_content=json_list,
-    genres_list=["Боевик", "Мелодрама", "Фентези"],
-    page_link={"first": nomb == 1, "last": nomb == pages, "n_pages": list(range(1, pages))[nomb - 2:nomb + 2], "current": nomb},
-    content=content)
+    if request.method == "GET":
+        content, pages, m_p = init_content(Film.query.all())
+        json_list = json.loads(open('static/json/carousel.json', "rt", encoding="utf8").read())
+        return render_template("main_page.html", corousel_content=json_list,
+        genres_list=["Боевик", "Мелодрама", "Фентези"],
+        page_link={"first": nomb == 1, "tek_page": nomb, "last": nomb == m_p, "n_pages": pages, "current": nomb},
+        content=content)
+    elif request.method == "POST":
+        return redirect(f"/search/{request.form['zapros']}/page1")
+        
 
 
 # ---------------------------------------------
 
 @app.route('/')
 def main_page():
-    nomb = 1
-    content, pages = init_content(Film.query.all())
-    json_list = json.loads(open('static/json/carousel.json', "rt", encoding="utf8").read())
-    return render_template("main_page.html", corousel_content=json_list,
-    genres_list=["Боевик", "Мелодрама", "Фентези"],
-    page_link={"first": nomb == 1, "last": nomb == pages, "n_pages": list(range(1, pages))[nomb - 2:nomb + 2], "current": nomb},
-    content=content)
+    if request.method == "GET":
+        nomb = 1 
+        content, pages, m_p = init_content(Film.query.all())
+        json_list = json.loads(open('static/json/carousel.json', "rt", encoding="utf8").read())
+        return render_template("main_page.html", corousel_content=json_list,
+        genres_list=["Боевик", "Мелодрама", "Фентези"],
+        page_link={"first": nomb == 1, "tek_page": nomb, "last": nomb == m_p, "n_pages": pages, "current": nomb},
+        content=content)
+    elif request.method == "POST":
+        return redirect(f"/search/{request.form['zapros']}/page1")
     
 
-
-@app.route('/films/id<int:film_id>')
-def film_page(film_id):
-    return render_template('page_film.html')
-
-@app.route('/user/id<int:user_id>')
+@app.route('/user/id<int:user_id>', methods=["GET", "POST"])
 def user_page(user_id):
-    return render_template('profile.html', fixed_footer=True)
+    if request.method == "GET":
+        user = User.query.filter(User.id == user_id).first()
+        user_films = [Film.query.filter(Film.id == int(i)).first() for i in user.films.split()]
 
-@app.route('/search/<name>')
-def search_film(name):
-    return
+        ln_house = sum((int(i.length) for i in user_films)) / 60
+
+        result = {
+            "films": len(user_films),
+            "hours": round(ln_house),
+            "days": round(ln_house / 24)
+        }
+        return render_template('profile.html', fixed_footer=True, user_id=user_id, 
+            private=User.query.filter(User.id == user_id).first().open,
+            films_user=enumerate(user_films), title=': ' + user.login, footer=1,
+            result=result)
+    elif request.method == "POST":
+        user = User.query.filter(User.id == user_id).first()
+        user = User(password=user.password, login=user.login, 
+            admin=user.admin, films=user.films, 
+            id=user.id, open=(user.open + 1) % 2)
+        User.query.filter(User.id == user_id).delete()
+        db.session.add(user)
+        db.session.commit()
+
+        user_films = [Film.query.filter(Film.id == int(i)).first() for i in user.films.split()]
+        
+        ln_house = sum((int(i.length) for i in user_films)) / 60
+        result = {
+            "films": len(user_films),
+            "hours": round(ln_house),
+            "days": round(ln_house / 24)
+        } 
+
+        return render_template('profile.html', user_id=user_id, 
+            private=User.query.filter(User.id == user_id).first().open,
+            films_user=enumerate(user_films), footer=1, title=': ' + user.login,
+            result=result)
+
+
+
+@app.route('/films/id<int:film_id>', methods=["GET", "POST"])
+def film_page(film_id):
+    if request.method == "GET":
+        film = Film.query.filter(Film.id == film_id).first()
+        return render_template('page_film.html', film=film, 
+            user=User.query.filter(User.id == session["user_id"]).first()  if "username" in session else None, 
+            title=': ' + film.name)
+    elif request.method == "POST":
+        if "username" in session:
+            user = User.query.filter(User.id == session["user_id"]).first()
+            films = user.films.split()
+            if str(film_id) in films:
+                films = list(filter(lambda x: x != str(film_id), films))
+            else:
+                films = user.films + ' ' + str(film_id)
+            films = ' '.join(films)
+            user = User(password=user.password, login=user.login, 
+                admin=user.admin, films=films, 
+                id=user.id, open=user.open)
+            User.query.filter(User.id == session["user_id"]).delete()
+            db.session.add(user)
+            db.session.commit()
+        
+        film = Film.query.filter(Film.id == film_id).first()
+
+        return render_template('page_film.html', film=film, 
+            user=User.query.filter(User.id == session["user_id"]).first() if "username" in session else None, 
+            title=': ' + film.name)
+        
+
+
+'''
+@app.route('/search/<name>/page<int:nomb>')
+def search_film(name, nomb):
+    if name:
+        if request.method == "GET":
+            content, pages, m_p = init_content(Film.query.all())
+            json_list = json.loads(open('static/json/carousel.json', "rt", encoding="utf8").read())
+            return render_template("main_page.html", corousel_content=json_list,
+            genres_list=["Боевик", "Мелодрама", "Фентези"],
+            page_link={"first": nomb == 1, "tek_page": nomb, "last": nomb == m_p, "n_pages": pages, "current": nomb},
+            content=content)
+        elif request.method == "POST":
+            return redirect(f"/search/{request.form['zapros']}")
+    else:
+        return render_template("error_404.html", title=": Ничего не найдено", fixed_footer=True)
+        получается неоптимально (в замороске)
+'''
 
 @app.route('/genres/<genre>')
 def search_genres(ganre):
