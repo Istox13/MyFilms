@@ -76,6 +76,7 @@ def registration():
             return redirect('/')
         return render_template('registration.html', title=': Регистрация', fixed_footer=True, error=error)
 
+
 @app.route('/add_film', methods=["GET", "POST"])
 def admin():
     if session["admin"]:
@@ -95,9 +96,42 @@ def admin():
         return render_template("error_404.html", title=": Страница не найдена", fixed_footer=True)
 
 
+@app.route('/users_list', methods=["GET", "POST"])
+def users_list():
+    if session["admin"]:
+        if request.method == "GET":
+            users = User.query.all()
+            return render_template("users_list.html", len_users=len(users), user_list=users, footer=1)
+        elif request.method == "POST":
+            if request.form.get('admin'):
+                method = request.form["admin"][:2]
+                user_id = int(request.form["admin"][2:])
+                if method == 'up':
+                    admin = True
+                elif method == 'dn':
+                    admin = False
+
+                user = User.query.filter(User.id == user_id).first()
+                user = User(password=user.password, login=user.login, 
+                    admin=admin, 
+                    films=user.films, 
+                    id=user.id, open=user.open)
+                User.query.filter(User.id == user_id).delete()
+                db.session.add(user)
+                db.session.commit()
+                
+            elif request.form.get('del'):
+                User.query.filter(User.id == int(request.form["del"])).delete()
+            users = User.query.all()
+            return render_template("users_list.html", title=": Операция выполнена", len_users=len(users), user_list=users, footer=1)
+    else:
+        return render_template("error_404.html", title=": Страница не найдена", fixed_footer=True)
+
+
 @app.errorhandler(404)
 def not_found(error):
     return render_template("error_404.html", title=": Страница не найдена", fixed_footer=True)
+
 
 @app.route("/page/<int:nomb>", methods=["POST", "GET"])
 def page(nomb):
@@ -201,25 +235,6 @@ def film_page(film_id):
             title=': ' + film.name)
         
 
-
-'''
-@app.route('/search/<name>/page<int:nomb>')
-def search_film(name, nomb):
-    if name:
-        if request.method == "GET":
-            content, pages, m_p = init_content(Film.query.all())
-            json_list = json.loads(open('static/json/carousel.json', "rt", encoding="utf8").read())
-            return render_template("main_page.html", corousel_content=json_list,
-            genres_list=["Боевик", "Мелодрама", "Фентези"],
-            page_link={"first": nomb == 1, "tek_page": nomb, "last": nomb == m_p, "n_pages": pages, "current": nomb},
-            content=content)
-        elif request.method == "POST":
-            return redirect(f"/search/{request.form['zapros']}")
-    else:
-        return render_template("error_404.html", title=": Ничего не найдено", fixed_footer=True)
-        получается неоптимально (в замороске)
-'''
-
 @app.route('/genres/<genre>')
 def search_genres(ganre):
     return
@@ -227,5 +242,5 @@ def search_genres(ganre):
 
 
 if __name__ == '__main__':
-    app.run(port=8080, host='127.0.0.1', debug=True)
+    app.run(port=8080, host='0.0.0.0', debug=True)
 
