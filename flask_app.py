@@ -121,7 +121,9 @@ def users_list():
                 db.session.commit()
                 
             elif request.form.get('del'):
-                User.query.filter(User.id == int(request.form["del"])).delete()
+                User.query.filter_by(id = int(request.form["del"])).delete()
+                db.session.commit()
+                
             users = User.query.all()
             return render_template("users_list.html", title=": Операция выполнена", len_users=len(users), user_list=users, footer=1)
     else:
