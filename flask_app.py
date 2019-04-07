@@ -221,8 +221,8 @@ def film_page(film_id):
             if str(film_id) in films:
                 films = list(filter(lambda x: x != str(film_id), films))
             else:
-                films = user.films + ' ' + str(film_id)
-            films = ' '.join(films)
+                films = films + [str(film_id)]
+            films = ' '.join(list(set(films)))
             user = User(password=user.password, login=user.login, 
                 admin=user.admin, films=films, 
                 id=user.id, open=user.open)
